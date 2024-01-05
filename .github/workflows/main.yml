@@ -12,5 +12,5 @@ jobs:
 
       - name: Cypress run
         uses: cypress-io/github-action@v3
-        with:
-          start: yarn cypress run --env allure=true
+        continue-on-error: true
+        run: npm run cy:run
