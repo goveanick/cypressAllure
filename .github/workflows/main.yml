@@ -12,8 +12,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v3
         with:
-          project: ./site
-          browser: chrome
-          build: yarn build
-          start: yarn start
-          wait-on: "http://localhost:3000"
+          start: yarn cypress run --env allure=true
