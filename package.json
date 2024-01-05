@@ -1,0 +1,11 @@
+{
+  "name": "cypressAllure_2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@mmisty/cypress-allure-adapter": "^0.16.2",
+    "allure-commandline": "^2.25.0",
+    "cypress": "^13.6.2"
+  }
+}
