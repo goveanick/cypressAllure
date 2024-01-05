@@ -1,0 +1,41 @@
+name: E2E on Chrome
+
+on: 
+  workflow_dispatch:
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install Cypress
+        run: yarn
+
+      - name: Cypress run
+        continue-on-error: true
+        run: yarn cypress run --env allure=true
+
+      - name: Get Allure history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+            ref: main
+            path: main
+
+      - name: Generate Allure Report
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+            allure_results: allure-results
+            gh_pages: main
+
+      - name: Deploy report to Github Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_branch: main
+            publish_dir: allure-history
