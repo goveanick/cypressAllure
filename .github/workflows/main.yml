@@ -12,4 +12,4 @@ jobs:
 
       - name: Cypress run
         continue-on-error: true
-        run: npm run cy:run
+        run: yarn cypress run --env allure=true
