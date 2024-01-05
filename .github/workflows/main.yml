@@ -10,6 +10,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Install Cypress
+        run: yarn
+
       - name: Cypress run
         continue-on-error: true
         run: yarn cypress run --env allure=true
